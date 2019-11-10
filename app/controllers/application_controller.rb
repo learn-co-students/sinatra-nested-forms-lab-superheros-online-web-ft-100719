@@ -18,6 +18,11 @@ class App < Sinatra::Base
       erb :super_hero
     end
 
+    get '/teams' do
+      @teams = Team.all
+      erb :teams
+    end
+
     post '/teams' do
       team = params[:team]
       @team = Team.new(name: team[:name], motto: team[:motto])
@@ -29,7 +34,5 @@ class App < Sinatra::Base
 
       redirect to "/team/#{@team.id}"
     end
-
-
 
 end
